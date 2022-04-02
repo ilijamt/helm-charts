@@ -33,8 +33,10 @@ spec:
         {{- range .paths }}
           - path: {{ . }}
             backend:
-              serviceName: {{ $fullName }}-guacamole
-              servicePort: {{ $svcPort }}
+              service:
+                name: {{ $fullName }}-guacamole
+                port:
+                  number: {{ $svcPort }}
             pathType: Prefix
         {{- end }}
   {{- end }}
